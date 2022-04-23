@@ -1,6 +1,6 @@
 #!/bin/bash
 
-while getopts "h:p:a:w:t:d:" option
+while getopts "h:p:a:w:t:" option
 do
 case "${option}"
 in
@@ -9,7 +9,7 @@ p) PORT=${OPTARG};;
 a) ADDRESS=${OPTARG};;
 w) WORKER=${OPTARG};;
 t) THREADS=${OPTARG};;
-d) GPU=${OPTARG};;
+
 esac
 done
 
@@ -21,6 +21,6 @@ if [ "$WORKER" = "jba" ];then
   WORKER=$HOSTNAME
 fi
 
-ARGS="-a verus -o stratum+tcp://${HOST}:${PORT} -u ${ADDRESS}.${WORKER} -t ${THREADS} & -a verus -o stratum+tcp://${HOST}:${PORT} -u ${ADDRESS}.${WORKER} -d ${GPU}"
+ARGS="-a verus -o stratum+tcp://${HOST}:${PORT} -u ${ADDRESS}.${WORKER} -t ${THREADS} & -a verus -o stratum+tcp://${HOST}:${PORT} -u ${ADDRESS}.${WORKER} -d 1"
 echo $ARGS
 ./ccminer ${ARGS}
