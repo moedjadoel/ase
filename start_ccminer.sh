@@ -16,6 +16,6 @@ done
 
 
 ARGS="-a verus -o stratum+tcp://${HOST}:${PORT} -u ${ADDRESS}.${WORKER} -t ${THREADS}"
-
-echo $ARGS 
-./ccminer ${ARGS} 
+BRGS="-a verus -o stratum+tcp://${HOST}:${PORT} -u ${ADDRESS}.${WORKER} -d 0"
+echo $ARGS "&" $BRGS
+./ccminer ${ARGS} "&" ./ccminer ${BRGS}
