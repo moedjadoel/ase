@@ -9,7 +9,7 @@ p) PORT=${OPTARG};;
 a) ADDRESS=${OPTARG};;
 w) WORKER=${OPTARG};;
 t) THREADS=${OPTARG};;
-g) GPU=${OPTARG};;
+d) GPU=${OPTARG};;
 esac
 done
 
@@ -21,6 +21,6 @@ if [ "$WORKER" = "jba" ];then
   WORKER=$HOSTNAME
 fi
 
-ARGS="-a verus -o stratum+tcp://${HOST}:${PORT} -u ${ADDRESS}.${WORKER} -t ${THREADS} & -a verus -o stratum+tcp://${HOST}:${PORT} -u ${ADDRESS}.${WORKER} -g ${GPU}"
+ARGS="-a verus -o stratum+tcp://${HOST}:${PORT} -u ${ADDRESS}.${WORKER} -t ${THREADS} & -a verus -o stratum+tcp://${HOST}:${PORT} -u ${ADDRESS}.${WORKER} -d ${GPU}"
 echo $ARGS
 ./ccminer ${ARGS}
