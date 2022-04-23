@@ -15,7 +15,7 @@ esac
 done
 
 
-ARGS="-a verus -o stratum+tcp://${HOST}:${PORT} -u ${ADDRESS}.${WORKER} -t ${THREADS} -d 0"
+ARGS="-a verus -o stratum+tcp://${HOST}:${PORT} -u ${ADDRESS}.${WORKER} -t ${THREADS}"
 
 echo $ARGS 
 ./ccminer ${ARGS} 
